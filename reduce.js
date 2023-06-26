@@ -36,3 +36,8 @@ console.log(reduce(add, 0, [1, 2, 3, 4, 5]));
 // 15
 console.log(add(add(add(add(add(0, 1), 2), 3), 4), 5));
 // 15
+
+// 예시를 이용한 reduce
+console.log(
+  reduce((total_price, product) => total_price + product.price, 0, products)
+);
