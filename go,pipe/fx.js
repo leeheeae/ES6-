@@ -13,7 +13,7 @@ const curry =
   (a, ..._) =>
     _.length ? f(a, ..._) : (..._) => f(a, ..._);
 
-const curryMap = curry((f, iter) => {
+const map = curry((f, iter) => {
   let res = [];
   for (const a of iter) {
     res.push(f(a));
@@ -21,7 +21,7 @@ const curryMap = curry((f, iter) => {
   return res;
 });
 
-const curryFilter = curry((f, iter) => {
+const filter = curry((f, iter) => {
   let res = [];
   for (const a of iter) {
     if (f(a)) res.push(a);
@@ -29,7 +29,7 @@ const curryFilter = curry((f, iter) => {
   return res;
 });
 
-const curryReduce = curry((f, acc, iter) => {
+const reduce = curry((f, acc, iter) => {
   if (!iter) {
     iter = acc[Symbol.iterator]();
     acc = iter.next().value;
@@ -41,4 +41,4 @@ const curryReduce = curry((f, acc, iter) => {
   return acc;
 });
 
-module.exports = { go, pipe, curry, curryMap, curryFilter, curryReduce };
+module.exports = { go, pipe, curry, map, filter, reduce };
